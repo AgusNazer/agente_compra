@@ -28,28 +28,30 @@ export default function App() {
     setResult(null);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/validate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          amount: parseFloat(formData.amount)
-        })
-      });
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+  
+  const response = await fetch(`${API_URL}/validate`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      ...formData,
+      amount: parseFloat(formData.amount)
+    })
+  });
 
-      if (!response.ok) {
-        throw new Error('Error validating purchase');
-      }
+  if (!response.ok) {
+    throw new Error('Error validating purchase');
+  }
 
-      const data = await response.json();
-      setResult(data);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+  const data = await response.json();
+  setResult(data);
+} catch (err) {
+  setError(err.message);
+} finally {
+  setLoading(false);
+}
   };
 
   const loadExample = (type) => {
