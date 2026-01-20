@@ -271,8 +271,8 @@ export default function App() {
         </div>
 
         <div className="text-center mt-8 text-sm text-gray-600">
-          <p>Built with FastAPI + LangChain + Ollama (Llama 3.2)</p>
-          <p className="mt-1">AI Agents Developer Demo Project</p>
+          <p>Built with FastAPI + LangChain + Gemini LLM</p>
+          <p className="mt-1">AI Agents Developer Demo Project v1.0</p>
         </div>
       </div>
     </div>
